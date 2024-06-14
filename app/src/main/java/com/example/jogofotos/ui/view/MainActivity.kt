@@ -1,4 +1,4 @@
-package com.example.jogofotos
+package com.example.jogofotos.ui.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -29,6 +29,9 @@ fun YourApp() {
             }
             composable("MenuActivity") {
                 MenuActivity(navController)
+            }
+            composable("ProfileActivity") {
+                ProfileActivity(navController)
             }
         }
     }

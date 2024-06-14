@@ -1,4 +1,4 @@
-package com.example.jogofotos
+package com.example.jogofotos.ui.view
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
