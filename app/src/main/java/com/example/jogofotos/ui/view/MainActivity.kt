@@ -33,6 +33,9 @@ fun YourApp() {
             composable("ProfileActivity") {
                 ProfileActivity(navController)
             }
+            composable("CreateLobbyActivity") {
+                CreateLobbyActivity(navController)
+            }
         }
     }
 }
