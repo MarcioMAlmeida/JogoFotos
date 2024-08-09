@@ -6,10 +6,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun SettingsActivity() {
+fun SettingsActivity(navController: NavHostController) {
     var isNotificationsEnabled by remember { mutableStateOf(true) } // Estado para controlar as notificações
 
     Column(
@@ -75,5 +78,13 @@ fun SettingsActivity() {
         ) {
             Text(text = "Logout")
         }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewSettingsActivity() {
+    MaterialTheme {
+        SettingsActivity(navController = rememberNavController())
     }
 }
