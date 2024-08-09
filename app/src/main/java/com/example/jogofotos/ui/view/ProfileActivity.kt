@@ -80,7 +80,7 @@ fun ProfileActivity(navController: NavHostController) {
                 modifier = Modifier.padding(bottom = 24.dp)
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_background),
+                    painter = painterResource(id = R.drawable.baseline_person_24),
                     contentDescription = "Profile Picture",
                     modifier = Modifier.size(64.dp)
                 )
@@ -101,36 +101,36 @@ fun ProfileActivity(navController: NavHostController) {
             Column {
                 Row {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_background),
+                        painter = painterResource(id = R.drawable.baseline_person_24),
                         contentDescription = "Photo 1",
                         modifier = imageModifier
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_background),
+                        painter = painterResource(id = R.drawable.baseline_person_24),
                         contentDescription = "Photo 2",
                         modifier = imageModifier
                     )
                 }
                 Row {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_background),
+                        painter = painterResource(id = R.drawable.baseline_person_24),
                         contentDescription = "Photo 3",
                         modifier = imageModifier
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_background),
+                        painter = painterResource(id = R.drawable.baseline_person_24),
                         contentDescription = "Photo 4",
                         modifier = imageModifier
                     )
                 }
                 Row {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_background),
+                        painter = painterResource(id = R.drawable.baseline_person_24),
                         contentDescription = "Photo 5",
                         modifier = imageModifier
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_background),
+                        painter = painterResource(id = R.drawable.baseline_person_24),
                         contentDescription = "Photo 6",
                         modifier = imageModifier
                     )

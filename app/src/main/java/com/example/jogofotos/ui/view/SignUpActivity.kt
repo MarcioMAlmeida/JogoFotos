@@ -17,15 +17,16 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun LoginActivity(navController: NavHostController) {
+fun SignUpActivity(navController: NavHostController) {
+    var firstName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var reEnterPassword by remember { mutableStateOf("") }
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -37,19 +38,45 @@ fun LoginActivity(navController: NavHostController) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Placeholder for Profile Picture
-            Surface(
-                modifier = Modifier
-                    .size(100.dp)
-                    .padding(bottom = 32.dp)
-            ) {
-                // This can be replaced with an Image composable to show an actual profile picture
-            }
-
             Text(
-                text = "Sign In",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(bottom = 32.dp)
+                text = "Back",
+                fontSize = 16.sp,
+                modifier = Modifier
+                    .align(Alignment.Start)
+                    .padding(bottom = 16.dp)
+                    .clickable {
+                        navController.popBackStack() // Volta para a atividade anterior
+                    }
+            )
+
+            OutlinedTextField(
+                value = firstName,
+                onValueChange = { firstName = it },
+                label = { Text("First name") },
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = { }
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+            )
+
+            OutlinedTextField(
+                value = lastName,
+                onValueChange = { lastName = it },
+                label = { Text("Last name") },
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = { }
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
             )
 
             OutlinedTextField(
@@ -73,11 +100,27 @@ fun LoginActivity(navController: NavHostController) {
                 label = { Text("Password") },
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = { }
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+            )
+
+            OutlinedTextField(
+                value = reEnterPassword,
+                onValueChange = { reEnterPassword = it },
+                label = { Text("Re enter password") },
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
                 ),
                 keyboardActions = KeyboardActions(
                     onDone = {
-                        navController.navigate("MenuActivity")
+                        // Lógica para cadastro
                     }
                 ),
                 modifier = Modifier.fillMaxWidth()
@@ -85,38 +128,13 @@ fun LoginActivity(navController: NavHostController) {
 
             Button(
                 onClick = {
-                    navController.navigate("MenuActivity")
+                    // Lógica para cadastrar o usuário
                 },
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .fillMaxWidth()
             ) {
-                Text(text = "Sign in")
-            }
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = "Forgot password",
-                    fontSize = 14.sp,
-                    textDecoration = TextDecoration.Underline,
-                    modifier = Modifier.clickable {
-                        // Handle forgot password click
-                    }
-                )
-
-                Text(
-                    text = "Sign up",
-                    fontSize = 14.sp,
-                    textDecoration = TextDecoration.Underline,
-                    modifier = Modifier.clickable {
-                        navController.navigate("SignUpActivity")
-                    }
-                )
+                Text(text = "Sign up")
             }
         }
     }
@@ -124,8 +142,8 @@ fun LoginActivity(navController: NavHostController) {
 
 @Preview
 @Composable
-fun PreviewLoginActivity() {
+fun PreviewSignUpActivity() {
     MaterialTheme {
-        LoginActivity(navController = rememberNavController())
+        SignUpActivity(navController = rememberNavController())
     }
 }
