@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "367011695985",
+    "project_id": "jogofotos-dc83b",
+    "storage_bucket": "jogofotos-dc83b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367011695985:android:8a22f2a74e4b5713c37ad0",
+        "android_client_info": {
+          "package_name": "com.example.jogofotos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqwSA9zWw_zzhz-PPJE9TdBiIAOk6n11Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

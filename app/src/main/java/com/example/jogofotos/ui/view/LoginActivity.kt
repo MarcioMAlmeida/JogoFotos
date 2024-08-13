@@ -1,5 +1,8 @@
 package com.example.jogofotos.ui.view
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
@@ -17,15 +20,19 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun LoginActivity(navController: NavHostController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    lateinit var auth : FirebaseAuth
+    auth = Firebase.auth
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -86,6 +93,23 @@ fun LoginActivity(navController: NavHostController) {
             Button(
                 onClick = {
                     navController.navigate("MenuActivity")
+
+                    auth.signInWithEmailAndPassword(email,password)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "signInWithCustomToken:success")
+                                val user = auth.currentUser
+                                //updateUI(user)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "signInWithCustomToken:failure", task.exception)
+                                Toast.makeText(baseContext, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show()
+                                //updateUI(null)
+                            }
+                        }
+
                 },
                 modifier = Modifier
                     .padding(top = 16.dp)
